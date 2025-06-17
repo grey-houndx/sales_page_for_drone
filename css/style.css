@@ -1,13 +1,14 @@
 /* Global Styles */
 :root {
-    --primary-color: #0A74DA; /* Professional Blue */
-    --secondary-color: #00A896; /* Teal Accent */
-    --dark-color: #222831;    /* Dark Grey for text/backgrounds */
-    --light-color: #FFFFFF;   /* White */
-    --grey-light: #f8f9fa;    /* Light grey for backgrounds */
-    --grey-medium: #6c757d;   /* Medium grey for secondary text */
+    --primary-color: #34495E; /* Deep Slate Blue */
+    --secondary-color: #1ABC9C; /* Vibrant Cyan/Turquoise */
+    --dark-color: #2C3E50;    /* Dark Charcoal Grey */
+    --light-color: #F8F9F9;   /* Off-White/Very Light Grey */
+    --grey-light: #EAEDED;    /* Light Grey */
+    --grey-medium: #7F8C8D;   /* Medium Grey */
     --font-primary: 'Roboto', 'Arial', sans-serif;
     --font-secondary: 'Montserrat', 'Helvetica', sans-serif;
+    --primary-color-rgb: 52, 73, 94; /* RGB for Deep Slate Blue */
 }
 
 /* Basic Reset */
@@ -87,7 +88,7 @@ ul {
 }
 
 .btn-primary:hover {
-    background-color: #085eaa; /* Darker blue */
+    background-color: #283747; /* Darker Slate Blue */
     color: var(--light-color);
     text-decoration: none;
     transform: translateY(-2px);
@@ -99,7 +100,7 @@ ul {
 }
 
 .btn-secondary:hover {
-    background-color: #008a75; /* Darker teal */
+    background-color: #16A085; /* Darker Cyan/Turquoise */
     color: var(--light-color);
     text-decoration: none;
     transform: translateY(-2px);
@@ -177,7 +178,7 @@ section:nth-of-type(even) {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns */
     gap: 2rem;
 }
 
@@ -228,7 +229,7 @@ section:nth-of-type(even) {
 
 .portfolio-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 columns */
     gap: 1.5rem; /* Slightly smaller gap for portfolio items */
 }
 
@@ -292,7 +293,7 @@ section:nth-of-type(even) {
 
 .benefits-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 columns */
     gap: 2rem;
     margin-bottom: 4rem; /* Space before testimonials */
 }
@@ -419,16 +420,8 @@ section:nth-of-type(even) {
 .form-group textarea:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 5px rgba(var(--primary-color-rgb, 10, 116, 218), 0.3); /* Assuming --primary-color-rgb is defined or use a direct rgba value */
+    box-shadow: 0 0 5px rgba(var(--primary-color-rgb), 0.3); /* Removed incorrect fallback */
 }
-
-/* Define --primary-color-rgb if not already (example based on #0A74DA) */
-/* This should ideally be at the top in :root */
-/* For now, adding it here for completeness of this snippet. Refactor later if needed. */
-:root {
-    --primary-color-rgb: 10, 116, 218; /* For the box-shadow */
-}
-
 
 .form-group textarea {
     min-height: 120px;
