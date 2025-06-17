@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (isValid) {
-                formMessages.textContent = 'Form submitted successfully! (This is a demo - no data was sent)';
+                formMessages.textContent = 'Thank you for your request! We'll be in touch soon. (Demo submission)';
                 formMessages.classList.add('success');
                 quoteForm.reset(); // Clear the form
             } else {
