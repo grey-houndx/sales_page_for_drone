@@ -74,4 +74,52 @@ document.addEventListener('DOMContentLoaded', () => {
     if (currentYearSpan) {
         currentYearSpan.textContent = new Date().getFullYear();
     }
+
+    // Dark/Light Mode Toggle Functionality
+    const darkModeToggle = document.getElementById("darkModeToggle");
+    const body = document.body;
+    const sunIcon = "☀️"; // Icon for switching to light mode
+    const moonIcon = "🌙"; // Icon for switching to dark mode
+
+    // Function to apply theme based on preference
+    const applyTheme = (theme) => {
+        if (theme === "dark") {
+            body.classList.add("dark-mode");
+            if (darkModeToggle) { // Check if toggle button exists
+                darkModeToggle.textContent = sunIcon;
+                darkModeToggle.setAttribute("aria-label", "Switch to light mode");
+                darkModeToggle.setAttribute("title", "Switch to light mode");
+            }
+        } else {
+            body.classList.remove("dark-mode");
+            if (darkModeToggle) { // Check if toggle button exists
+                darkModeToggle.textContent = moonIcon;
+                darkModeToggle.setAttribute("aria-label", "Switch to dark mode");
+                darkModeToggle.setAttribute("title", "Switch to dark mode");
+            }
+        }
+    };
+
+    // Check for saved theme preference on load
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else {
+        // Default to light mode if no preference or system preference check is not implemented
+        applyTheme("light");
+    }
+
+    // Event listener for the toggle button
+    if (darkModeToggle) { // Check if toggle button exists before adding listener
+        darkModeToggle.addEventListener("click", () => {
+            let newTheme;
+            if (body.classList.contains("dark-mode")) {
+                newTheme = "light";
+            } else {
+                newTheme = "dark";
+            }
+            applyTheme(newTheme);
+            localStorage.setItem("theme", newTheme);
+        });
+    }
 });

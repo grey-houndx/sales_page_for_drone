@@ -14,14 +14,16 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+
+<button id="darkModeToggle" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
     <header id="hero">
     <video autoplay loop muted playsinline id="heroVideoBg">
         <source src="https://assets.mixkit.co/videos/1952/1952-720.mp4" type="video/mp4">
         Your browser does not support the video tag. Please upgrade your browser to see this beautiful aerial footage.
     </video>
     <div class="container hero-content">
-        <h1>Elevate Your Perspective: Professional Drone Video Services</h1>
-        <p>Capture breathtaking aerial footage for real estate, events, marketing, and more. FAA-certified pilots, cutting-edge technology.</p>
+        <h1>Elevate Your Vision: Cinematic Drone Videography Services</h1>
+        <p>From stunning real estate showcases to dynamic event coverage and precise inspections, our FAA-certified pilots deliver breathtaking aerial perspectives with cutting-edge drone technology.</p>
         <a href="#contact" class="btn btn-primary btn-lg">Get a Free Quote</a>
     </div>
     </header>
@@ -55,40 +57,44 @@
         <h2 class="section-title text-center">See Our Work in Action</h2>
         <div class="portfolio-grid">
             <div class="portfolio-item">
-                <a href="#portfolio-item1-modal" class="portfolio-link">
-                    <img src="https://placehold.co/600x400/777/white?text=Luxury+Villa+Fly-through&font=montserrat" alt="Luxury Villa Fly-through">
-                    <div class="portfolio-caption">
-                        <h4>Oceanfront Estate Fly-Through</h4>
-                        <p class="text-muted">A sweeping aerial tour showcasing the grandeur of a modern oceanfront estate, its infinity pool, and landscaped gardens at sunset.</p>
-                    </div>
-                </a>
+                <video poster="https://placehold.co/600x400/5B86E5/FFFFFF?text=Oceanfront+Estate+Sunset+View&font=montserrat" controls width="100%">
+                    <source src="https://assets.mixkit.co/videos/5363/5363-720.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="portfolio-caption">
+                    <h4>Oceanfront Estate Fly-Through</h4>
+                    <p class="text-muted">A sweeping aerial tour showcasing the grandeur of a modern oceanfront estate, its infinity pool, and landscaped gardens at sunset.</p>
+                </div>
             </div>
             <div class="portfolio-item">
-                <a href="#portfolio-item2-modal" class="portfolio-link">
-                    <img src="https://placehold.co/600x400/888/white?text=Downtown+Event+Coverage&font=montserrat" alt="Downtown Event Coverage">
-                    <div class="portfolio-caption">
-                        <h4>City Music Festival Highlights</h4>
-                        <p class="text-muted">Dynamic aerial footage capturing the energy of a large outdoor music festival, crowd shots, and stage views under vibrant lighting.</p>
-                    </div>
-                </a>
+                <video poster="https://placehold.co/600x400/36D1DC/FFFFFF?text=City+Music+Festival+Aerial&font=montserrat" controls width="100%">
+                    <source src="https://assets.mixkit.co/videos/11/11-720.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="portfolio-caption">
+                    <h4>City Music Festival Highlights</h4>
+                    <p class="text-muted">Dynamic aerial footage capturing the energy of a large outdoor music festival, crowd shots, and stage views under vibrant lighting.</p>
+                </div>
             </div>
             <div class="portfolio-item">
-                <a href="#portfolio-item3-modal" class="portfolio-link">
-                    <img src="https://placehold.co/600x400/999/white?text=Construction+Progress&font=montserrat" alt="Construction Progress Monitoring">
-                    <div class="portfolio-caption">
-                        <h4>Skyscraper Construction Timelapse</h4>
-                        <p class="text-muted">Month-by-month aerial progression of a skyscraper development, from foundation to near completion, highlighting key milestones.</p>
-                    </div>
-                </a>
+                <video poster="https://placehold.co/600x400/CFB53B/FFFFFF?text=Skyscraper+Construction+Site&font=montserrat" controls width="100%">
+                    <source src="https://assets.mixkit.co/videos/41541/41541-720.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="portfolio-caption">
+                    <h4>Skyscraper Construction Timelapse</h4>
+                    <p class="text-muted">Month-by-month aerial progression of a skyscraper development, from foundation to near completion, highlighting key milestones.</p>
+                </div>
             </div>
             <div class="portfolio-item">
-                <a href="#portfolio-item4-modal" class="portfolio-link">
-                    <img src="https://placehold.co/600x400/AAA/white?text=Coastal+Landscape+Shot&font=montserrat" alt="Coastal Landscape Shot">
-                    <div class="portfolio-caption">
-                        <h4>Coastal Landscape</h4>
-                        <p class="text-muted">A majestic drone flight along dramatic sea cliffs and turquoise waters, capturing the raw beauty of a remote coastline.</p>
-                    </div>
-                </a>
+                <video poster="https://placehold.co/600x400/766A98/FFFFFF?text=Dramatic+Coastal+Cliffs&font=montserrat" controls width="100%">
+                    <source src="https://assets.mixkit.co/videos/52476/52476-720.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="portfolio-caption">
+                    <h4>Cliffs of Serenity: Coastal Drone Tour</h4>
+                    <p class="text-muted">A majestic drone flight along dramatic sea cliffs and turquoise waters, capturing the raw beauty of a remote coastline.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -186,7 +192,6 @@
         </section>
     </main>
 
-<!-- Modal for Portfolio Item 1 --><div id="portfolio-item1-modal" class="modal-overlay">    <div class="modal-content">        <a href="#close" class="modal-close-btn" title="Close">&times;</a>        <img src="https://placehold.co/800x500/5B86E5/FFFFFF?text=Oceanfront+Estate+Sunset+View+-+Large&font=montserrat" alt="Oceanfront Estate Fly-Through - Large View">        <h3>Oceanfront Estate Fly-Through</h3>        <p>This detailed aerial tour captures the architectural brilliance of a modern oceanfront estate, its luxurious infinity pool, and meticulously landscaped gardens as the sun sets, casting a warm glow over the scene. The footage highlights the seamless integration of the property with its stunning natural surroundings.</p>    </div></div>
     <footer id="footer">
     <div class="container text-center">
         <div class="social-links">

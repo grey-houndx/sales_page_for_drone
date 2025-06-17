@@ -1,14 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Poppins:wght@400;700&display=swap');
 /* Global Styles */
 :root {
-    --primary-color: #34495E; /* Deep Slate Blue */
-    --secondary-color: #1ABC9C; /* Vibrant Cyan/Turquoise */
-    --dark-color: #2C3E50;    /* Dark Charcoal Grey */
-    --light-color: #F8F9F9;   /* Off-White/Very Light Grey */
-    --grey-light: #EAEDED;    /* Light Grey */
-    --grey-medium: #7F8C8D;   /* Medium Grey */
-    --font-primary: 'Roboto', 'Arial', sans-serif;
-    --font-secondary: 'Montserrat', 'Helvetica', sans-serif;
-    --primary-color-rgb: 52, 73, 94; /* RGB for Deep Slate Blue */
+    /* New Royal Purple Theme - Light Mode */
+    --primary-color: #6A0DAD;       /* Royal Purple */
+    --secondary-color: #FFD700;     /* Gold */
+    --text-color: #212529;          /* Dark Grey/Black (for text on light bg) */
+    --bg-color: #FFFFFF;            /* White (for light bg) */
+    --card-bg-color: #F8F9FA;       /* Very Light Grey (for cards on light bg) */
+    --border-color: #DEE2E6;        /* Light Grey (for borders) */
+    --text-muted-color: #6c757d;    /* Medium Grey (for muted text) */
+    --primary-color-rgb: 106, 13, 173; /* RGB for Royal Purple */
+
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Orbitron', sans-serif; /* Orbitron for headings */
+
+    /* Fallbacks for old names if strictly needed, though remapping is preferred */
+    --dark-color: var(--text-color); /* Remapped */
+    --light-color: var(--bg-color); /* Remapped */
+    --grey-light: var(--card-bg-color); /* Remapped */
+    --grey-medium: var(--text-muted-color); /* Remapped */
 }
 
 /* Basic Reset */
@@ -21,12 +31,12 @@
 body {
     font-family: var(--font-primary);
     line-height: 1.6;
-    color: var(--dark-color);
-    background-color: var(--light-color);
+    color: var(--text-color); /* Correctly uses new semantic name */
+    background-color: var(--bg-color); /* Correctly uses new semantic name */
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-secondary);
+    font-family: var(--font-secondary); /* Will now use Orbitron */
     margin-bottom: 0.75rem;
     line-height: 1.3;
 }
@@ -39,7 +49,7 @@ h4 { font-size: 1.4rem; }
 p {
     margin-bottom: 1rem;
     font-size: 1rem;
-    color: var(--grey-medium);
+    color: var(--text-muted-color);
 }
 
 a {
@@ -84,24 +94,24 @@ ul {
 
 .btn-primary {
     background-color: var(--primary-color);
-    color: var(--light-color);
+    color: var(--bg-color); /* Use new --bg-color (White) for text */
 }
 
 .btn-primary:hover {
-    background-color: #283747; /* Darker Slate Blue */
-    color: var(--light-color);
+    background-color: #520A8C; /* Darker Royal Purple */
+    color: var(--bg-color); /* Use new --bg-color (White) for text */
     text-decoration: none;
     transform: translateY(-2px);
 }
 
 .btn-secondary {
-    background-color: var(--secondary-color);
-    color: var(--light-color);
+    background-color: var(--secondary-color); /* Gold */
+    color: var(--text-color); /* Dark text on Gold for contrast */
 }
 
 .btn-secondary:hover {
-    background-color: #16A085; /* Darker Cyan/Turquoise */
-    color: var(--light-color);
+    background-color: #E1C000; /* Darker Gold */
+    color: var(--text-color); /* Dark text on Gold for contrast */
     text-decoration: none;
     transform: translateY(-2px);
 }
@@ -112,7 +122,7 @@ section {
 }
 
 section:nth-of-type(even) {
-    background-color: var(--grey-light);
+    background-color: var(--card-bg-color); /* Correctly uses remapped var */
 }
 
 /* Placeholder for Google Fonts import if needed - will add actual import if internet access is confirmed */
@@ -122,11 +132,9 @@ section:nth-of-type(even) {
 
 /* Hero Section Styles */
 #hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://placehold.co/1920x1080/555/white?text=Drone+Footage+Placeholder&font=montserrat');
 
-
-
-    color: var(--light-color);
+    /* Removed extra blank lines */
+    color: var(--bg-color); /* Hero text should be light (bg-color is white) */
     height: 100vh; /* Full viewport height */
     display: flex;
     align-items: center;
@@ -145,7 +153,7 @@ section:nth-of-type(even) {
 #hero h1 {
     font-size: 3.5rem; /* Larger font for hero headline */
     margin-bottom: 1rem;
-    color: var(--light-color);
+    color: var(--bg-color); /* Use --bg-color (White) */
     font-weight: 700;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
@@ -153,7 +161,7 @@ section:nth-of-type(even) {
 #hero p {
     font-size: 1.3rem;
     margin-bottom: 2rem;
-    color: var(--grey-light); /* Lighter text for contrast on dark bg */
+    color: var(--card-bg-color); /* Use --card-bg-color (Off-white/VeryLightGrey) for slight contrast */
     font-weight: 400;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
@@ -185,7 +193,7 @@ section:nth-of-type(even) {
 }
 
 .service-item {
-    background-color: var(--light-color);
+    background-color: var(--card-bg-color); /* Use card background */
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -221,12 +229,12 @@ section:nth-of-type(even) {
 
 .service-item p {
     font-size: 0.95rem;
-    color: var(--grey-medium);
+    color: var(--text-muted-color);
 }
 
 /* Portfolio Section Styles */
 #portfolio {
-    /* background-color: var(--light-color); // Default section background */
+    /* background-color: var(--bg-color); // Default section background */
 }
 
 .portfolio-grid {
@@ -240,7 +248,7 @@ section:nth-of-type(even) {
     overflow: hidden; /* Ensures the caption overlay works well */
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    background-color: var(--dark-color); /* Fallback for image loading */
+    background-color: var(--card-bg-color); /* Fallback for image loading */
 }
 
 .portfolio-item img {
@@ -266,7 +274,7 @@ section:nth-of-type(even) {
     left: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent overlay */
-    color: var(--light-color);
+    color: var(--bg-color); /* Text on overlay should be light */
     padding: 1rem;
     transition: opacity 0.4s ease;
     opacity: 0; /* Hidden by default */
@@ -277,20 +285,20 @@ section:nth-of-type(even) {
 }
 
 .portfolio-caption h4 {
-    color: var(--light-color);
+    color: var(--bg-color); /* Text on overlay */
     margin-bottom: 0.25rem;
     font-size: 1.2rem;
 }
 
 .portfolio-caption .text-muted {
-    color: var(--grey-light);
+    color: var(--card-bg-color); /* Lighter text on overlay */
     font-size: 0.9rem;
     margin-bottom: 0;
 }
 
 /* Why Choose Us Section Styles */
 #why-choose-us {
-    background-color: var(--grey-light); /* Alternating background */
+    background-color: var(--card-bg-color); /* Use card background for alternating section */
 }
 
 .benefits-grid {
@@ -303,7 +311,7 @@ section:nth-of-type(even) {
 .benefit-item {
     text-align: center;
     padding: 1.5rem;
-    /* background-color: var(--light-color); */ /* Optional: if section bg is not light */
+    /* background-color: var(--bg-color); */ /* Optional: if section bg is not light */
     /* border-radius: 8px; */
     /* box-shadow: 0 2px 8px rgba(0,0,0,0.05); */
 }
@@ -322,7 +330,7 @@ section:nth-of-type(even) {
 
 .benefit-item p {
     font-size: 0.9rem;
-    color: var(--grey-medium);
+    color: var(--text-muted-color);
 }
 
 /* Testimonials Styles */
@@ -333,7 +341,7 @@ section:nth-of-type(even) {
 }
 
 .testimonial-item {
-    background-color: var(--light-color);
+    background-color: var(--card-bg-color); /* Use card background */
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
@@ -348,7 +356,7 @@ section:nth-of-type(even) {
 
 .testimonial-item blockquote p {
     font-style: italic;
-    color: var(--dark-color);
+    color: var(--text-color);
     margin-bottom: 1rem;
     font-size: 1rem;
 }
@@ -376,14 +384,14 @@ section:nth-of-type(even) {
 
 /* Contact Form Section Styles */
 #contact {
-    /* background-color: var(--light-color); Default section background */
+    /* background-color: var(--bg-color); Default section background */
 }
 
 .contact-form {
     max-width: 700px;
     margin: 0 auto;
     padding: 2rem;
-    background-color: var(--grey-light);
+    background-color: var(--card-bg-color); /* Use card background */
     border-radius: 8px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
@@ -395,7 +403,7 @@ section:nth-of-type(even) {
 .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     font-weight: bold;
 }
 
@@ -445,8 +453,8 @@ section:nth-of-type(even) {
 
 /* Footer Styles */
 #footer {
-    background-color: var(--dark-color);
-    color: var(--grey-light);
+    background-color: var(--text-color); /* Footer dark bg for Light Mode */
+    color: var(--bg-color); /* Footer light text for Light Mode */
     padding: 3rem 0;
     text-align: center;
 }
@@ -462,7 +470,7 @@ section:nth-of-type(even) {
 
 .social-links a,
 .footer-links a {
-    color: var(--grey-light);
+    color: var(--bg-color); /* Ensure links are light on dark footer */
     margin: 0 0.5rem;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -481,7 +489,7 @@ section:nth-of-type(even) {
 
 .copyright {
     font-size: 0.9rem;
-    color: var(--grey-medium);
+    color: #AAB7B8; /* Custom lighter grey for copyright on dark footer */
     margin-bottom: 0; /* Reset paragraph margin */
 }
 
@@ -643,7 +651,7 @@ section:nth-of-type(even) {
 }
 
 .modal-content {
-    background-color: var(--light-color);
+    background-color: var(--bg-color); /* Modal background */
     padding: 2rem;
     border-radius: 8px;
     max-width: 800px; /* Max width of modal */
@@ -667,7 +675,7 @@ section:nth-of-type(even) {
 
 .modal-content p {
     font-size: 1rem;
-    color: var(--grey-medium);
+    color: var(--text-muted-color);
     margin-bottom: 0;
 }
 
@@ -676,7 +684,7 @@ section:nth-of-type(even) {
     top: 1rem;
     right: 1rem;
     font-size: 2rem;
-    color: var(--dark-color);
+    color: var(--text-color);
     text-decoration: none;
     line-height: 1;
 }
@@ -704,3 +712,84 @@ section:nth-of-type(even) {
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
     z-index: 2;
 }
+
+/* Dark/Light Mode Toggle Button */
+#darkModeToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001; /* Ensure it is above most content */
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 0.5rem 0.8rem;
+    border-radius: 50%; /* Make it round */
+    cursor: pointer;
+    font-size: 1.5rem; /* For emoji icon */
+    line-height: 1; /* Ensure emoji is centered */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+#darkModeToggle:hover {
+    background-color: var(--primary-color);
+    color: var(--bg-color); /* Light text on primary bg */
+    transform: scale(1.1);
+}
+#darkModeToggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.4);
+}
+
+/* Dark Mode Overrides */
+body.dark-mode {
+    --text-color: #E0E0E0;
+    --bg-color: #121212;
+    --card-bg-color: #1E1E1E;
+    --border-color: #444444;
+    --text-muted-color: #A0A0A0;
+}
+/* Specific component adjustments for Dark Mode */
+body.dark-mode #footer {
+    background-color: #1E1E1E; /* A consistent dark card background */
+    color: var(--text-color);
+}
+body.dark-mode #footer .social-links a,
+body.dark-mode #footer .footer-links a {
+    color: var(--text-color);
+}
+body.dark-mode #footer .copyright {
+    color: var(--text-muted-color);
+}
+body.dark-mode .btn-primary {
+    color: #FFFFFF; /* Ensure text on primary (Royal Purple) button is light */
+}
+body.dark-mode .btn-secondary {
+    color: #121212; /* Ensure text on secondary (Gold) button is dark */
+}
+body.dark-mode .btn-secondary:hover {
+    color: #121212; /* Ensure text on secondary (Gold) button hover is dark */
+}
+body.dark-mode .modal-close-btn {
+    color: var(--text-color); /* Uses the new light text color */
+}
+body.dark-mode #darkModeToggle {
+    background-color: var(--card-bg-color);
+    color: var(--text-color);
+    border-color: var(--border-color);
+}
+body.dark-mode #darkModeToggle:hover {
+    background-color: var(--primary-color);
+    color: #FFFFFF; /* Light text on primary bg */
+}
+
+/* Portfolio Video Adjustments */
+.portfolio-item video {
+    display: block; /* Remove extra space below if any */
+    width: 100%;    /* Make video responsive */
+    height: auto;   /* Maintain aspect ratio */
+    border-radius: 0; /* Override parent item radius if video is main content */
+    /* If portfolio-caption is to overlay, video might need to be direct child or have specific structure */
+}
+/* Ensure portfolio-caption is still visible on hover if desired */
+/* The current .portfolio-item:hover .portfolio-caption should still work */
+/* If video controls interfere with caption, adjustments would be needed. */
+/* For now, assume default controls are acceptable and caption appears over them on hover. */
