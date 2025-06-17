@@ -1,7 +1,7 @@
 // Main JavaScript file for AeroVision Studios Landing Page
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('AeroVision Studios landing page scripts loaded.');
+    console.log('AeroVision Studios landing page scripts loaded.'); // Keep this initial log
     const heroContent = document.querySelector('#hero .hero-content');
     if (heroContent) {
         heroContent.style.opacity = '0';
@@ -59,7 +59,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             if (isValid) {
-                formMessages.textContent = 'Thank you for your request! We\\'ll be in touch soon. (Demo submission)';
+                // Ensure the apostrophe is escaped here
+                formMessages.textContent = 'Thank you for your request! We\'ll be in touch soon. (Demo submission)';
                 formMessages.classList.add('success');
                 quoteForm.reset(); // Clear the form
             } else {
@@ -80,63 +81,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = document.body;
     const sunIcon = "☀️"; // Icon for switching to light mode
     const moonIcon = "🌙"; // Icon for switching to dark mode
-    console.log("Dark mode script initializing...");
-    if (!darkModeToggle) {
-        console.error("Dark mode toggle button not found!");
-    }
-    if (!body) {
-        console.error("Document body not found!"); // Should ideally not happen if script runs after body
-    }
-
-    // Function to apply theme based on preference
     const applyTheme = (theme) => {
-        console.log("Applying theme:", theme);
         if (theme === "dark") {
             body.classList.add("dark-mode");
-            console.log("Added class dark-mode to body. Current classes:", body.className);
-            if (darkModeToggle) {
+            if (darkModeToggle) { // Check if toggle button exists
                 darkModeToggle.textContent = sunIcon;
                 darkModeToggle.setAttribute("aria-label", "Switch to light mode");
                 darkModeToggle.setAttribute("title", "Switch to light mode");
             }
         } else {
             body.classList.remove("dark-mode");
-            console.log("Removed class dark-mode from body. Current classes:", body.className);
-            if (darkModeToggle) {
+            if (darkModeToggle) { // Check if toggle button exists
                 darkModeToggle.textContent = moonIcon;
                 darkModeToggle.setAttribute("aria-label", "Switch to dark mode");
                 darkModeToggle.setAttribute("title", "Switch to dark mode");
             }
         }
     };
-
-    // Check for saved theme preference on load
     const savedTheme = localStorage.getItem("theme");
-    console.log("Saved theme from localStorage:", savedTheme);
     if (savedTheme) {
         applyTheme(savedTheme);
     } else {
-        console.log("No saved theme found, defaulting to light mode.");
         applyTheme("light"); // Default to light mode
     }
-
-    // Event listener for the toggle button
-    if (darkModeToggle) {
+    if (darkModeToggle) { // Check if toggle button exists before adding listener
         darkModeToggle.addEventListener("click", () => {
-            console.log("Dark mode toggle button clicked.");
             let newTheme;
             if (body.classList.contains("dark-mode")) {
-                console.log("Currently in dark mode, switching to light.");
                 newTheme = "light";
             } else {
-                console.log("Currently in light mode, switching to dark.");
                 newTheme = "dark";
             }
             applyTheme(newTheme);
             localStorage.setItem("theme", newTheme);
-            console.log("Set localStorage theme to:", newTheme);
         });
-    } else {
-        console.log("Dark mode toggle button not found, cannot attach click listener.");
     }
+
 });
