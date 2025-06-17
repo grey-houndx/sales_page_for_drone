@@ -273,8 +273,8 @@ section:nth-of-type(even) {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.75); /* Semi-transparent overlay */
-    color: var(--bg-color); /* Text on overlay should be light */
+    background-color: rgba(0, 0, 0, 0.9); /* Increased opacity */
+    color: #FFFFFF; /* Always white text for caption */
     padding: 1rem;
     transition: opacity 0.4s ease;
     opacity: 0; /* Hidden by default */
@@ -285,13 +285,13 @@ section:nth-of-type(even) {
 }
 
 .portfolio-caption h4 {
-    color: var(--bg-color); /* Text on overlay */
+    color: #FFFFFF; /* Ensure h4 is always white */
     margin-bottom: 0.25rem;
     font-size: 1.2rem;
 }
 
 .portfolio-caption .text-muted {
-    color: var(--card-bg-color); /* Lighter text on overlay */
+    color: #E0E0E0; /* Light grey for muted text in caption */
     font-size: 0.9rem;
     margin-bottom: 0;
 }
@@ -743,7 +743,7 @@ section:nth-of-type(even) {
 body.dark-mode {
     --text-color: #E0E0E0;
     --bg-color: #121212;
-    --card-bg-color: #1E1E1E;
+    --card-bg-color: #2A2A2A; /* Slightly lighter for card separation */
     --border-color: #444444;
     --text-muted-color: #A0A0A0;
 }
@@ -793,3 +793,9 @@ body.dark-mode #darkModeToggle:hover {
 /* The current .portfolio-item:hover .portfolio-caption should still work */
 /* If video controls interfere with caption, adjustments would be needed. */
 /* For now, assume default controls are acceptable and caption appears over them on hover. */
+
+/* Hero Dark Mode Text Color Correction */
+body.dark-mode #hero h1,
+body.dark-mode #hero p {
+    color: #FFFFFF; /* Pure white for max contrast on dark video overlay */
+}
