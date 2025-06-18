@@ -268,33 +268,9 @@ section:nth-of-type(even) {
     text-decoration: none;
 }
 
-.portfolio-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.9); /* Increased opacity */
-    color: #FFFFFF; /* Always white text for caption */
-    padding: 1rem;
-    transition: opacity 0.4s ease;
-    opacity: 0; /* Hidden by default */
-}
-
-.portfolio-item:hover .portfolio-caption {
-    opacity: 1; /* Show caption on hover */
-}
-
-.portfolio-caption h4 {
-    color: #FFFFFF; /* Ensure h4 is always white */
-    margin-bottom: 0.25rem;
-    font-size: 1.2rem;
-}
-
-.portfolio-caption .text-muted {
-    color: #E0E0E0; /* Light grey for muted text in caption */
-    font-size: 0.9rem;
-    margin-bottom: 0;
-}
+/* Old .portfolio-caption rules removed/neutralized.
+   New styles for .portfolio-item, .portfolio-video-column,
+   .portfolio-text-column, and .custom-play-button are now active. */
 
 /* Why Choose Us Section Styles */
 #why-choose-us {
@@ -798,4 +774,94 @@ body.dark-mode #darkModeToggle:hover {
 body.dark-mode #hero h1,
 body.dark-mode #hero p {
     color: #FFFFFF; /* Pure white for max contrast on dark video overlay */
+}
+
+/* New Portfolio Split Card Styles */
+.portfolio-item {
+    display: flex;
+    flex-direction: row; /* Default for desktop: side-by-side */
+    background-color: var(--card-bg-color);
+    overflow: hidden; /* Keep existing overflow and border-radius if desired */
+    /* border-radius: 8px; - already there */
+    /* box-shadow: 0 4px 15px rgba(0,0,0,0.1); - already there */
+    /* position: relative; - already there */
+}
+.portfolio-video-column {
+    flex: 3; /* Video column takes more space, e.g., 60% */
+    position: relative;
+    background-color: #000; /* Black background for video area */
+    min-height: 200px; /* Ensure some height for poster */
+}
+.portfolio-item video {
+    /* display: block; width: 100%; height: auto; - already styled from previous step */
+    /* Ensure video is vertically centered if its aspect ratio doesn't fill the column height */
+    /* This might require the column to have a fixed aspect ratio or more complex flex inside */
+    /* For now, width 100% and auto height is fine. */
+}
+.custom-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(var(--primary-color-rgb), 0.8);
+    color: #FFFFFF;
+    font-size: 2.5rem; /* Adjust for emoji or icon */
+    padding: 0.8rem 1.2rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex; /* For centering icon if it was text */
+    align-items: center;
+    justify-content: center;
+    width: 70px; /* Fixed size for circle */
+    height: 70px;
+    line-height: 1; /* For emoji */
+}
+.custom-play-button:hover {
+    background-color: rgba(var(--primary-color-rgb), 1);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+.portfolio-text-column {
+    flex: 2; /* Text column takes less space, e.g., 40% */
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Vertically center text content if desired */
+}
+.portfolio-text-column h4 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+.portfolio-text-column p {
+    color: var(--text-muted-color);
+    font-size: 0.9rem;
+    margin-bottom: 0;
+}
+/* Responsive adjustments for portfolio split card */
+@media (max-width: 860px) { /* Breakpoint for stacking */
+    .portfolio-item {
+        flex-direction: column;
+    }
+    .portfolio-video-column,
+    .portfolio-text-column {
+        flex: 1; /* Reset flex basis, they stack */
+    }
+    .portfolio-text-column {
+        padding: 1rem; /* Adjust padding for stacked view */
+    }
+}
+
+/* Dark Mode considerations for Portfolio Split Card (mostly uses existing variables) */
+body.dark-mode .custom-play-button {
+    /* background-color: rgba(var(--primary-color-rgb), 0.8); /* Stays the same, Royal Purple */
+    /* color: #FFFFFF; /* Stays the same */
+}
+body.dark-mode .custom-play-button:hover {
+    /* background-color: rgba(var(--primary-color-rgb), 1); */
+}
+body.dark-mode .portfolio-text-column h4 {
+    color: var(--primary-color); /* Stays Royal Purple, should be visible */
+}
+body.dark-mode .portfolio-text-column p {
+    color: var(--text-muted-color); /* Uses dark mode text-muted, which is lighter grey */
 }

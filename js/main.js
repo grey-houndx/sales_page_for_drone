@@ -117,4 +117,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Portfolio Video Custom Play Button Functionality
+    const portfolioItems = document.querySelectorAll(".portfolio-item");
+    if (portfolioItems.length > 0) {
+        portfolioItems.forEach(item => {
+            const video = item.querySelector("video");
+            const playButton = item.querySelector(".custom-play-button");
+
+            if (video && playButton) {
+                // Show play button initially
+                playButton.style.display = "flex"; // Matches CSS display for centering icon
+
+                playButton.addEventListener("click", () => {
+                    video.play();
+                    playButton.style.display = "none";
+                    video.setAttribute("controls", "true"); // Show default controls once playing
+                });
+
+                video.addEventListener("ended", () => {
+                    playButton.style.display = "flex";
+                    video.removeAttribute("controls");
+                    // video.load(); // Consider if needed: Resets video to show poster frame.
+                                  // load() can be heavy. currentTime = 0 might be enough if poster is set.
+                    video.currentTime = 0; // Rewind to beginning to show poster
+                });
+
+                video.addEventListener("pause", () => {
+                    if (!video.ended && video.hasAttribute("controls")) {
+                        setTimeout(() => {
+                            if (!video.ended && video.paused) { // Double check paused state after timeout
+                                playButton.style.display = "flex";
+                            }
+                        }, 50);
+                    }
+                });
+
+                video.addEventListener("click", () => {
+                    if (!video.hasAttribute("controls") && video.paused) {
+                        video.play();
+                        playButton.style.display = "none";
+                        video.setAttribute("controls", "true");
+                    }
+                });
+            }
+        });
+    }
 });
