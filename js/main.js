@@ -162,4 +162,105 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Portfolio Carousel Functionality
+    const portfolioSection = document.getElementById("portfolio");
+    if (portfolioSection) {
+        const carouselWrapper = portfolioSection.querySelector(".portfolio-carousel-wrapper");
+        const portfolioGrid = portfolioSection.querySelector(".portfolio-grid");
+        const portfolioItems = portfolioSection.querySelectorAll(".portfolio-item");
+        const prevArrow = portfolioSection.querySelector(".carousel-arrow.prev");
+        const nextArrow = portfolioSection.querySelector(".carousel-arrow.next");
+        const dotsContainer = portfolioSection.querySelector(".carousel-dots");
+
+        if (carouselWrapper && portfolioGrid && portfolioItems.length > 0 && prevArrow && nextArrow && dotsContainer) {
+            console.log("Initializing Portfolio Carousel with Autoplay..."); // Debug log
+            let currentIndex = 0;
+            const totalItems = portfolioItems.length;
+            let autoplayInterval = null;
+            const autoplayDelay = 7000; // 7 seconds
+
+            // Create dots
+            for (let i = 0; i < totalItems; i++) {
+                const dot = document.createElement("span");
+                dot.classList.add("dot");
+                dot.setAttribute("data-index", i);
+                dot.addEventListener("click", () => {
+                    stopAutoplay();
+                    goToSlide(i);
+                    startAutoplay(); // Restart autoplay after manual interaction
+                });
+                dotsContainer.appendChild(dot);
+            }
+            const dots = dotsContainer.querySelectorAll(".dot");
+
+            function updateDots(index) {
+                if (dots.length > 0) {
+                    dots.forEach(d => d.classList.remove("active"));
+                    if (dots[index]) {
+                        dots[index].classList.add("active");
+                    }
+                }
+            }
+
+            function goToSlide(index) {
+                console.log(`Carousel: Going to slide ${index}`); // Debug log
+                currentIndex = index;
+                const newTransformValue = -currentIndex * (100 / totalItems);
+                portfolioGrid.style.transform = `translateX(${newTransformValue}%)`;
+                updateDots(currentIndex);
+            }
+
+            function startAutoplay() {
+                stopAutoplay();
+                console.log("Carousel: Starting autoplay..."); // Debug log
+                autoplayInterval = setInterval(() => {
+                    let nextIndex = currentIndex + 1;
+                    if (nextIndex >= totalItems) {
+                        nextIndex = 0;
+                    }
+                    goToSlide(nextIndex);
+                }, autoplayDelay);
+            }
+
+            function stopAutoplay() {
+                if (autoplayInterval) {
+                    console.log("Carousel: Stopping autoplay."); // Debug log
+                    clearInterval(autoplayInterval);
+                    autoplayInterval = null;
+                }
+            }
+
+            nextArrow.addEventListener("click", () => {
+                stopAutoplay();
+                let nextIndex = currentIndex + 1;
+                if (nextIndex >= totalItems) {
+                    nextIndex = 0;
+                }
+                goToSlide(nextIndex);
+                startAutoplay();
+            });
+
+            prevArrow.addEventListener("click", () => {
+                stopAutoplay();
+                let prevIndex = currentIndex - 1;
+                if (prevIndex < 0) {
+                    prevIndex = totalItems - 1;
+                }
+                goToSlide(prevIndex);
+                startAutoplay();
+            });
+
+            carouselWrapper.addEventListener("mouseenter", stopAutoplay);
+            carouselWrapper.addEventListener("mouseleave", startAutoplay);
+
+            // Initial setup
+            if (dots.length > 0) {
+                 goToSlide(0);
+            }
+            startAutoplay(); // Start autoplay initially
+        } else {
+            console.warn("Portfolio carousel elements not fully found. Carousel JS not initialized.");
+        }
+    } // End of if (portfolioSection)
 });

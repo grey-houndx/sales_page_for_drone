@@ -2,6 +2,8 @@
 /* Global Styles */
 :root {
     /* New Royal Purple Theme - Light Mode */
+    --text-color-rgb: 33, 37, 41; /* For #212529 */
+    --bg-color-rgb: 255, 255, 255; /* For #FFFFFF */
     --primary-color: #6A0DAD;       /* Royal Purple */
     --secondary-color: #FFD700;     /* Gold */
     --text-color: #212529;          /* Dark Grey/Black (for text on light bg) */
@@ -237,10 +239,11 @@ section:nth-of-type(even) {
     /* background-color: var(--bg-color); // Default section background */
 }
 
-.portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Desktop: 4 columns */
-    gap: 1.5rem; /* Slightly smaller gap for portfolio items */
+.portfolio-grid { /* This is now the slider track */
+    display: flex;
+    width: 400%; /* For 4 items, each taking 100% of wrapper width */
+    transition: transform 0.5s ease-in-out;
+    /* gap property is removed for seamless sliding; items control their own spacing or lack thereof */
 }
 
 .portfolio-item {
@@ -717,6 +720,8 @@ section:nth-of-type(even) {
 
 /* Dark Mode Overrides */
 body.dark-mode {
+    --text-color-rgb: 224, 224, 224; /* For #E0E0E0 */
+    --bg-color-rgb: 18, 18, 18;       /* For #121212 */
     --text-color: #E0E0E0;
     --bg-color: #121212;
     --card-bg-color: #2A2A2A; /* Slightly lighter for card separation */
@@ -864,4 +869,99 @@ body.dark-mode .portfolio-text-column h4 {
 }
 body.dark-mode .portfolio-text-column p {
     color: var(--text-muted-color); /* Uses dark mode text-muted, which is lighter grey */
+}
+
+/* Portfolio Carousel Styles */
+.portfolio-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* This rule is to ensure any specific grid properties on portfolio-grid within #portfolio
+   are overridden for carousel behavior. The base .portfolio-grid is already flex. */
+section#portfolio .portfolio-grid {
+    /* grid-template-columns: none; /* Not needed if base is flex */
+    gap: 0; /* Explicitly remove gap if it was there from a more specific rule */
+}
+
+.portfolio-item { /* This is now a slide */
+    width: 25%; /* Each item is 1/4 of the 400% track width -> 100% of wrapper width */
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(var(--text-color-rgb), 0.5); /* Use text color RGB for bg */
+    color: var(--bg-color); /* Light icon on darkish bg */
+    border: none;
+    padding: 0.8rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10; /* Above slides */
+    font-size: 1.5rem;
+    line-height: 1;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.9);
+    color: #FFFFFF;
+}
+
+.carousel-arrow.prev {
+    left: 15px;
+}
+
+.carousel-arrow.next {
+    right: 15px;
+}
+
+.carousel-dots {
+    text-align: center;
+    margin-top: 1.5rem;
+    padding-bottom: 1rem; /* Add some padding if it's the last element in section */
+}
+
+.carousel-dots .dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 6px;
+    background-color: var(--text-muted-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-dots .dot.active {
+    background-color: var(--primary-color);
+}
+
+/* Dark Mode Adjustments for Carousel Navigation */
+body.dark-mode .carousel-arrow {
+    background-color: rgba(var(--bg-color-rgb), 0.3); /* Use bg color (light in dark mode) for arrow bg */
+    color: var(--text-color); /* Dark icon on lightish bg */
+}
+
+body.dark-mode .carousel-arrow:hover {
+    background-color: rgba(var(--primary-color-rgb), 0.9);
+    color: #FFFFFF;
+}
+
+body.dark-mode .carousel-dots .dot {
+    background-color: var(--text-muted-color); /* Uses dark mode's lighter muted text */
+}
+
+body.dark-mode .carousel-dots .dot.active {
+    background-color: var(--primary-color); /* Stays Royal Purple, should be fine */
 }
