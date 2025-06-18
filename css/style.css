@@ -15,12 +15,6 @@
 
     --font-primary: 'Poppins', sans-serif;
     --font-secondary: 'Orbitron', sans-serif; /* Orbitron for headings */
-
-    /* Fallbacks for old names if strictly needed, though remapping is preferred */
-    --dark-color: var(--text-color); /* Remapped */
-    --light-color: var(--bg-color); /* Remapped */
-    --grey-light: var(--card-bg-color); /* Remapped */
-    --grey-medium: var(--text-muted-color); /* Remapped */
 }
 
 /* Basic Reset */
@@ -127,8 +121,6 @@ section:nth-of-type(even) {
     background-color: var(--card-bg-color); /* Correctly uses remapped var */
 }
 
-/* Placeholder for Google Fonts import if needed - will add actual import if internet access is confirmed */
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap'); */
 /* For now, relying on system fonts as specified in var(--font-primary) and var(--font-secondary) */
 
 
@@ -175,7 +167,7 @@ section:nth-of-type(even) {
 
 /* Services Section Styles */
 #services {
-    background-color: var(--grey-light); /* Alternating background color */
+    background-color: var(--card-bg-color); /* Alternating background color */
 }
 
 .section-title {
@@ -236,7 +228,6 @@ section:nth-of-type(even) {
 
 /* Portfolio Section Styles */
 #portfolio {
-    /* background-color: var(--bg-color); // Default section background */
 }
 
 .portfolio-grid { /* This is now the slider track */
@@ -290,9 +281,6 @@ section:nth-of-type(even) {
 .benefit-item {
     text-align: center;
     padding: 1.5rem;
-    /* background-color: var(--bg-color); */ /* Optional: if section bg is not light */
-    /* border-radius: 8px; */
-    /* box-shadow: 0 2px 8px rgba(0,0,0,0.05); */
 }
 
 .benefit-icon {
@@ -363,7 +351,6 @@ section:nth-of-type(even) {
 
 /* Contact Form Section Styles */
 #contact {
-    /* background-color: var(--bg-color); Default section background */
 }
 
 .contact-form {
@@ -858,11 +845,8 @@ body.dark-mode #hero p {
 
 /* Dark Mode considerations for Portfolio Split Card (mostly uses existing variables) */
 body.dark-mode .custom-play-button {
-    /* background-color: rgba(var(--primary-color-rgb), 0.8); /* Stays the same, Royal Purple */
-    /* color: #FFFFFF; /* Stays the same */
 }
 body.dark-mode .custom-play-button:hover {
-    /* background-color: rgba(var(--primary-color-rgb), 1); */
 }
 body.dark-mode .portfolio-text-column h4 {
     color: var(--primary-color); /* Stays Royal Purple, should be visible */

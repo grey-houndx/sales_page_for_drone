@@ -137,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 video.addEventListener("ended", () => {
                     playButton.style.display = "flex";
                     video.removeAttribute("controls");
-                    // video.load(); // Consider if needed: Resets video to show poster frame.
                                   // load() can be heavy. currentTime = 0 might be enough if poster is set.
                     video.currentTime = 0; // Rewind to beginning to show poster
                 });
@@ -174,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const dotsContainer = portfolioSection.querySelector(".carousel-dots");
 
         if (carouselWrapper && portfolioGrid && portfolioItems.length > 0 && prevArrow && nextArrow && dotsContainer) {
-            console.log("Initializing Portfolio Carousel with Autoplay..."); // Debug log
+            // console.log("Initializing Portfolio Carousel with Autoplay..."); // Debug log
             let currentIndex = 0;
             const totalItems = portfolioItems.length;
             let autoplayInterval = null;
@@ -204,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             function goToSlide(index) {
-                console.log(`Carousel: Going to slide ${index}`); // Debug log
+                // console.log(`Carousel: Going to slide ${index}`); // Debug log
                 currentIndex = index;
                 const newTransformValue = -currentIndex * (100 / totalItems);
                 portfolioGrid.style.transform = `translateX(${newTransformValue}%)`;
@@ -213,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             function startAutoplay() {
                 stopAutoplay();
-                console.log("Carousel: Starting autoplay..."); // Debug log
+                // console.log("Carousel: Starting autoplay..."); // Debug log
                 autoplayInterval = setInterval(() => {
                     let nextIndex = currentIndex + 1;
                     if (nextIndex >= totalItems) {
@@ -225,7 +224,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             function stopAutoplay() {
                 if (autoplayInterval) {
-                    console.log("Carousel: Stopping autoplay."); // Debug log
+                    // console.log("Carousel: Stopping autoplay."); // Debug log
                     clearInterval(autoplayInterval);
                     autoplayInterval = null;
                 }
